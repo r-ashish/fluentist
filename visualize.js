@@ -1,7 +1,7 @@
 const currentScoreView = document.getElementById("current-score");
 const highScoreView = document.getElementById("high-score");
 const alertBox = document.getElementById("alert-box");
-const THRESHOLD = 80;
+const THRESHOLD = 135;
 const MAX_ALLOWED_CONSECUTIVE_MISSES = 27; // ~ 0.5 sec
 const constraints = {audio: true};
 const canvas = document.querySelector('.canvas');
@@ -122,8 +122,7 @@ visualize = () => {
         let max = 0;
 
         dataArray.forEach((d) => {
-            const v = d / 128.0;
-            max = Math.max(max, v * HEIGHT/2);
+            max = Math.max(max, d);
         });
 
         if (max <= THRESHOLD) {
