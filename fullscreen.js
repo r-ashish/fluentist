@@ -1,6 +1,7 @@
 const elem = document.body;
 const fullScreenButton = document.getElementById("fullscreen-button");
 let isFullScreen = false;
+
 function toggleFullScreen() {
   if (isFullScreen = !isFullScreen) {
     openFullscreen();

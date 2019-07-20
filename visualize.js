@@ -5,11 +5,9 @@ const THRESHOLD = 80;
 const MAX_ALLOWED_CONSECUTIVE_MISSES = 27; // ~ 0.5 sec
 const constraints = {audio: true};
 const canvas = document.querySelector('.canvas');
-const WIDTH = canvas.width;
-const HEIGHT = canvas.height;
 const canvasCtx = canvas.getContext("2d");
-canvasCtx.fillStyle = 'rgb(256, 256, 256)';
-canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+let WIDTH = canvas.width;
+let HEIGHT = canvas.height;
 let source;
 let audioCtx;
 let analyser;
@@ -17,6 +15,30 @@ let highScore = 0;
 let missedIntervals = 0;
 let currentScore;
 let startTime;
+
+function drawCanvasPlaceHolder() {
+    var img = new Image();
+    img.onload = function() {
+        canvasCtx.drawImage(img, WIDTH/3, HEIGHT/3, WIDTH/3, HEIGHT/3);
+    }
+    img.src = "notes.png";
+}
+
+setCanvasDimensions = () => {
+    canvas.width = window.innerWidth*0.7;
+    canvas.height = window.innerHeight/2;
+    WIDTH = canvas.width;
+    HEIGHT = canvas.height;
+    canvasCtx.fillStyle = 'rgb(256, 256, 256)';
+    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+    drawCanvasPlaceHolder();
+}
+
+window.onresize = () => {
+    setCanvasDimensions();
+}
+
+setCanvasDimensions();
 
 startListening = () => {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
