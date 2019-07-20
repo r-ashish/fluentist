@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>
+        Visualizer
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: black;
+            color: white;
+            /* background: #f5f5f5; */
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            margin-top: -30px;
+            padding: 0 15%;
+        }
+        .header {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 0 30px;
+            margin-bottom: 40px;
+        }
+        .current-score-wrapper {
+            flex:1;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .high-score-wrapper {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .alert {
+            font-size: 20px;
+        }
+
+        .alert.show {
+            display: block;
+            font-size: 40px;
+        }
+        
+        .canvas {
+            width: 100%;
+            height:50%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        #start {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <p class="alert" id="alert-box">Let's start!</p>
+            <p class="current-score-wrapper">Score: <span id="current-score">0.00s</span></p>
+            <p class="high-score-wrapper">Best Score: <span id="high-score">0.00s</span></p>
+            <button onclick="resetHighScore()">Reset</button>
+        </div>
+        <canvas class="canvas" ></canvas>
+        <button id="start" onclick="startListening()">Start listening</button>
+    </div>
+    <script src="./visualize.js"></script>
+</body>
+</html>
