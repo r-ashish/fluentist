@@ -21,7 +21,7 @@ function drawCanvasPlaceHolder() {
     img.onload = function() {
         canvasCtx.drawImage(img, WIDTH/3, HEIGHT/3, WIDTH/3, HEIGHT/3);
     }
-    img.src = "notes.png";
+    img.src = "img/notes.png";
 }
 
 setCanvasDimensions = () => {
